@@ -1,0 +1,19 @@
+barry@baliBookPro projects % kubectl get pods -o wide
+
+barry@baliBookPro lesson-networking % kubectl exec -it pingtest-84646bf5d4-4z6fg bash
+root@pingtest-84646bf5d4-4z6fg:/# apt-get update; apt-get install iputils-ping curl dnsutils iproute2 -y
+
+---
+barry@baliBookPro projects % kubectl get svc
+NAME         TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
+hello-svc    NodePort    10.96.86.102   <none>        8080:30001/TCP   5m13s
+kubernetes   ClusterIP   10.96.0.1      <none>        443/TCP          7m4s
+
+curl hello-svc:8080
+- clusterIP & container port approach
+
+curl -i docker-desktop:30001
+- node-ip & nodeport value approach
+
+---
+kubectl get svc --watch
